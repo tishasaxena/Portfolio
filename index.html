@@ -46,6 +46,10 @@
             background: #ec4899;
             /* pink-500 */
         }
+
+        .nav-link:active{
+            color: #ec4899;
+        }
     </style>
 
     <script src="https://cdn.tailwindcss.com"></script>
@@ -74,12 +78,12 @@
 
             <!-- Nav Links -->
             <nav id="menu" class="hidden md:flex space-x-5 text-gray-700 dark:text-gray-100 font-semibold">
-                <a href="#home" class="hover:text-pink-500 transition">Home</a>
-                <a href="#about" class="hover:text-pink-500 transition">About</a>
-                <a href="#projects" class="hover:text-pink-500 transition">Projects</a>
-                <a href="#skills" class="hover:text-pink-500 transition">Skills</a>
-                <a href="#experience" class="hover:text-pink-500 transition">Experience</a>
-                <a href="#contact" class="hover:text-pink-500 transition">Contact</a>
+                <a href="#home" class="hover:text-pink-500  transition nav-link">Home</a>
+                <a href="#about" class="hover:text-pink-500 transition nav-link">About</a>
+                <a href="#projects" class="hover:text-pink-500 transition nav-link">Projects</a>
+                <a href="#skills" class="hover:text-pink-500 transition nav-link">Skills</a>
+                <a href="#experience" class="hover:text-pink-500 transition nav-link">Experience</a>
+                <a href="#contact" class="hover:text-pink-500 transition nav-link">Contact</a>
                 <!-- Desktop Toggle -->
                 <div class="flex items-center gap-2 ml-4 hidden md:flex">
                     <span id="mode-icon-desktop" class="text-gray-700 dark:text-gray-100 text-lg">🌙</span>
@@ -97,12 +101,12 @@
 
         <!-- Mobile Menu -->
         <div id="mobile-menu" class="md:hidden hidden px-6 pb-4 bg-white dark:bg-gray-900 space-y-2">
-            <a href="#home" class="block text-gray-700  dark:text-gray-100 hover:text-pink-500 ">Home</a>
-            <a href="#about" class="block text-gray-700  dark:text-gray-100 hover:text-pink-500">About</a>
-            <a href="#projects" class="block text-gray-700  dark:text-gray-100 hover:text-pink-500">Projects</a>
-            <a href="#skills" class="block text-gray-700  dark:text-gray-100 hover:text-pink-500">Skills</a>
-            <a href="#experience" class="block text-gray-700  dark:text-gray-100 hover:text-pink-500">Experience</a>
-            <a href="#contact" class="block text-gray-700  dark:text-gray-100 hover:text-pink-500">Contact</a>
+            <a href="#home" class="block text-gray-700  dark:text-gray-100 hover:text-pink-500 nav-link">Home</a>
+            <a href="#about" class="block text-gray-700  dark:text-gray-100 hover:text-pink-500 nav-link">About</a>
+            <a href="#projects" class="block text-gray-700  dark:text-gray-100 hover:text-pink-500 nav-link">Projects</a>
+            <a href="#skills" class="block text-gray-700  dark:text-gray-100 hover:text-pink-500 nav-link" >Skills</a>
+            <a href="#experience" class="block text-gray-700  dark:text-gray-100 hover:text-pink-500 nav-link">Experience</a>
+            <a href="#contact" class="block text-gray-700  dark:text-gray-100 hover:text-pink-500 nav-link">Contact</a>
             <!-- Mobile Toggle -->
             <div class="flex items-center gap-2">
                 <!-- Icon / Text -->
