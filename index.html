@@ -1,11 +1,938 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Portfolio | Tisha Saxena</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
+        .fadeIn {
+            animation: fadeIn 1.5s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #f472b6;
+            /* pink-400 */
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #ec4899;
+            /* pink-500 */
+        }
+
+        .nav-link:active{
+            color: #ec4899;
+        }
+    </style>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+        }
+    </script>
+
 </head>
-<body>
-    
+
+<body class="bg-white text-gray-800">
+    <!-- Navbar -->
+    <header
+        class="bg-white border-b-[3px] border-pink-600 dark:bg-gray-900 shadow fixed w-full z-50 text-gray-800 dark:text-gray-200">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <!-- Logo -->
+            <div class="text-2xl ml-[5%] font-bold text-pink-500">Tisha</div>
+
+            <!-- Hamburger (Mobile) -->
+            <div class="md:hidden">
+                <button id="menu-toggle" class="text-pink-500 focus:outline-none text-2xl">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+
+            <!-- Nav Links -->
+            <nav id="menu" class="hidden md:flex space-x-5 text-gray-700 dark:text-gray-100 font-semibold">
+                <a href="#home" class="hover:text-pink-500  transition nav-link">Home</a>
+                <a href="#about" class="hover:text-pink-500 transition nav-link">About</a>
+                <a href="#projects" class="hover:text-pink-500 transition nav-link">Projects</a>
+                <a href="#skills" class="hover:text-pink-500 transition nav-link">Skills</a>
+                <a href="#experience" class="hover:text-pink-500 transition nav-link">Experience</a>
+                <a href="#contact" class="hover:text-pink-500 transition nav-link">Contact</a>
+                <!-- Desktop Toggle -->
+                <div class="flex items-center gap-2 ml-4 hidden md:flex">
+                    <span id="mode-icon-desktop" class="text-gray-700 dark:text-gray-100 text-lg">🌙</span>
+                    <span id="mode-text-desktop" class="text-gray-700 dark:text-gray-100 font-medium">Dark Mode</span>
+                    <label class="relative inline-flex items-center cursor-pointer">
+                        <input type="checkbox" id="theme-toggle-desktop" class="sr-only peer" />
+                        <div
+                            class="w-8 h-4 bg-gray-400 rounded-full peer-checked:bg-yellow-400 transition-colors duration-300
+             after:content-[''] after:absolute after:top-0 after:left-0 after:w-4 after:h-4 after:bg-white after:border after:rounded-full after:transition-all peer-checked:after:translate-x-full">
+                        </div>
+                    </label>
+                </div>
+            </nav>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="md:hidden hidden px-6 pb-4 bg-white dark:bg-gray-900 space-y-2">
+            <a href="#home" class="block text-gray-700  dark:text-gray-100 hover:text-pink-500 nav-link">Home</a>
+            <a href="#about" class="block text-gray-700  dark:text-gray-100 hover:text-pink-500 nav-link">About</a>
+            <a href="#projects" class="block text-gray-700  dark:text-gray-100 hover:text-pink-500 nav-link">Projects</a>
+            <a href="#skills" class="block text-gray-700  dark:text-gray-100 hover:text-pink-500 nav-link" >Skills</a>
+            <a href="#experience" class="block text-gray-700  dark:text-gray-100 hover:text-pink-500 nav-link">Experience</a>
+            <a href="#contact" class="block text-gray-700  dark:text-gray-100 hover:text-pink-500 nav-link">Contact</a>
+            <!-- Mobile Toggle -->
+            <div class="flex items-center gap-2">
+                <!-- Icon / Text -->
+                <div class="flex items-center gap-1 ml-4 md:hidden">
+                    <span id="mode-icon-mobile" class="text-white text-lg">🌙</span>
+                    <label class="relative inline-flex items-center cursor-pointer">
+                        <input type="checkbox" id="theme-toggle-mobile" class="sr-only peer" />
+                        <div
+                            class="w-11 h-6 bg-gray-600 rounded-full peer-checked:bg-yellow-400 transition-colors duration-300
+             after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:after:translate-x-full">
+                        </div>
+                    </label>
+                </div>
+            </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home"
+        class="min-h-screen flex items-center pt-20 bg-pink-50 text-gray-800 dark:bg-gray-900 dark:text-white">
+        <div
+            class="container mx-auto px-6 py-16 md:py-24 flex flex-col-reverse md:flex-row items-center justify-center gap-10">
+
+            <!-- Text Content -->
+            <div class=" md:w-2/3 mx-10 animate-fadeIn">
+                <h1 class="text-4xl md:text-6xl font-bold mb-4">
+                    Hi, I'm <span id="typingName" class="text-pink-500"></span>
+                </h1>
+                <h2 class="text-2xl md:text-3xl font-semibold mb-6 text-gray-600 dark:text-gray-200">
+                    Student | Web Developer | Tech Enthusiast
+                </h2>
+                <p class="text-lg mb-8 text-gray-600 dark:text-gray-300 max-w-xl">
+                    Currently pursuing B.Tech at IIIT Bhopal. I love building responsive and interactive web
+                    applications and exploring new technologies.
+                </p>
+                <div class="flex flex-wrap gap-4">
+                    <a href="#projects"
+                        class="bg-pink-500 hover:bg-pink-600 text-white px-6 py-3 rounded-lg transition shadow-lg dark:bg-pink-600 dark:hover:bg-pink-500">
+                        View My Work
+                    </a>
+                    <a href="#contact"
+                        class="border-2 border-pink-500 text-pink-500 hover:bg-pink-50 px-6 py-3 rounded-lg transition dark:border-pink-400 dark:text-pink-400 dark:hover:bg-pink-800">
+                        Contact Me
+                    </a>
+                </div>
+            </div>
+
+            <!-- Image Section -->
+            <div class=" md:w-1/3 flex justify-center animate-fadeIn delay-200">
+                <div class="relative">
+                    <div
+                        class="w-64 h-64 md:w-80 md:h-80 bg-pink-100 rounded-full overflow-hidden border-4 border-pink-500 shadow-xl">
+                        <img src="data:image/png;base64,..." alt="Tisha Saxena" class="w-full h-full object-cover">
+                    </div>
+                    <div class="absolute -bottom-5 -right-5 bg-white dark:bg-gray-800 p-4 rounded-lg shadow-lg">
+                        <div class="flex items-center">
+                            <div class="w-12 h-12 bg-pink-500 rounded-full flex items-center justify-center text-white">
+                                <i class="fas fa-code text-xl"></i>
+                            </div>
+                            <div class="ml-3">
+                                <p class="font-bold text-gray-800 dark:text-white">Learning</p>
+                                <p class="text-sm text-gray-500 dark:text-gray-300">Web Dev Skills</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about"
+        class="py-20 bg-white text-gray-800 dark:bg-gray-900 dark:text-white transition-colors duration-300">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-16 animate-fadeIn">
+                About <span class="text-pink-500">Me</span>
+            </h2>
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/3 mb-10 md:mb-0 flex justify-center animate-fadeIn delay-100">
+                    <div
+                        class="w-64 h-64 md:w-72 md:h-72 bg-pink-100 dark:bg-pink-200 rounded-lg overflow-hidden shadow-lg">
+                        <img src="data:image/png;base64,iVBORw0K..." alt="Tisha Saxena"
+                            class="w-full h-full object-cover">
+                    </div>
+                </div>
+                <div class="md:w-2/3 md:pl-12 animate-fadeIn delay-200">
+                    <h3 class="text-2xl font-semibold mb-4">Who am I?</h3>
+                    <p class="text-gray-600 dark:text-gray-300 mb-6">
+                        I'm a computer science undergrad at IIIT Bhopal with a passion for web development.
+                        I enjoy learning new tools and frameworks, and building real-world projects that solve problems.
+                    </p>
+                    <p class="text-gray-600 dark:text-gray-300 mb-8">
+                        My approach combines technical expertise with creative problem-solving to deliver high-quality
+                        solutions. I'm dedicated to writing clean, efficient code and creating intuitive user
+                        experiences.
+                    </p>
+                    <div class="grid grid-cols-2 gap-4 mb-8">
+                        <div class="flex items-center">
+                            <i class="fas fa-check-circle text-pink-500 mr-2"></i>
+                            <span>Problem Solving</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-check-circle text-pink-500 mr-2"></i>
+                            <span>Responsive Design</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-check-circle text-pink-500 mr-2"></i>
+                            <span>Clean Code</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-check-circle text-pink-500 mr-2"></i>
+                            <span>Team Collaboration</span>
+                        </div>
+                    </div>
+                    <div class="flex space-x-4">
+                        <a href="#"
+                            class="bg-pink-500 hover:bg-pink-600 text-white px-6 py-2 rounded-lg transition flex items-center">
+                            <i class="fas fa-download mr-2"></i> Download CV
+                        </a>
+                        <a href="#contact"
+                            class="border border-pink-500 text-pink-500 hover:bg-pink-50 dark:hover:bg-gray-800 px-6 py-2 rounded-lg transition">
+                            Contact Me
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-20 bg-pink-50 dark:bg-gray-900 transition-colors duration-300">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-4 text-gray-900 dark:text-white animate-fadeIn">
+                My <span class="text-pink-500">Projects</span>
+            </h2>
+            <p class="text-center text-gray-600 dark:text-gray-300 mb-16 max-w-2xl mx-auto animate-fadeIn delay-100">
+                Here are some of my recent projects. Each one was carefully crafted to solve specific problems and
+                deliver value.
+            </p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Project 1 -->
+                <div
+                    class="project-card bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-md animate-fadeIn delay-200">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71" alt="Project 1"
+                            class="w-full h-full object-cover transition duration-500 hover:scale-105" />
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2 text-gray-900 dark:text-white">DecodeHTML</h3>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">
+                            An HTML visualizer that decodes HTML entities in real time. Built using React.js.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span
+                                class="bg-pink-100 dark:bg-pink-800 text-pink-800 dark:text-pink-100 text-xs px-3 py-1 rounded-full">React</span>
+                            <span
+                                class="bg-pink-100 dark:bg-pink-800 text-pink-800 dark:text-pink-100 text-xs px-3 py-1 rounded-full">Node.js</span>
+                            <span
+                                class="bg-pink-100 dark:bg-pink-800 text-pink-800 dark:text-pink-100 text-xs px-3 py-1 rounded-full">MongoDB</span>
+                        </div>
+                        <div class="flex space-x-3">
+                            <a href="#" class="text-pink-500 hover:text-pink-700 dark:hover:text-pink-300">
+                                <i class="fas fa-external-link-alt"></i> Live Demo
+                            </a>
+                            <a href="#"
+                                class="text-gray-500 hover:text-gray-700 dark:text-gray-300 dark:hover:text-white">
+                                <i class="fab fa-github"></i> Code
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div
+                    class="project-card bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-md animate-fadeIn delay-300">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://tse2.mm.bing.net/th/id/OIP.TD-ApkFq1pE1yUz7jpywVQHaGB?rs=1&pid=ImgDetMain&o=7&rm=3"
+                            alt="Project 2"
+                            class="w-full h-full object-cover transition duration-500 hover:scale-105" />
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2 text-gray-900 dark:text-white">FoodComa</h3>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">
+                            A food ordering platform with backend integration using Node.js, Express, and MongoDB.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span
+                                class="bg-pink-100 dark:bg-pink-800 text-pink-800 dark:text-pink-100 text-xs px-3 py-1 rounded-full">Vue.js</span>
+                            <span
+                                class="bg-pink-100 dark:bg-pink-800 text-pink-800 dark:text-pink-100 text-xs px-3 py-1 rounded-full">Firebase</span>
+                            <span
+                                class="bg-pink-100 dark:bg-pink-800 text-pink-800 dark:text-pink-100 text-xs px-3 py-1 rounded-full">TailwindCSS</span>
+                        </div>
+                        <div class="flex space-x-3">
+                            <a href="#" class="text-pink-500 hover:text-pink-700 dark:hover:text-pink-300">
+                                <i class="fas fa-external-link-alt"></i> Live Demo
+                            </a>
+                            <a href="#"
+                                class="text-gray-500 hover:text-gray-700 dark:text-gray-300 dark:hover:text-white">
+                                <i class="fab fa-github"></i> Code
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div
+                    class="project-card bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-md animate-fadeIn delay-400">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQscrhs8sm6eGVdxYqBn6-cV6fjmmq93JaN7A&s"
+                            alt="Project 3"
+                            class="w-full h-full object-cover transition duration-500 hover:scale-105" />
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2 text-gray-900 dark:text-white">e-Ration System</h3>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">
+                            A ration distribution management system for rural India with a user-friendly interface.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span
+                                class="bg-pink-100 dark:bg-pink-800 text-pink-800 dark:text-pink-100 text-xs px-3 py-1 rounded-full">JavaScript</span>
+                            <span
+                                class="bg-pink-100 dark:bg-pink-800 text-pink-800 dark:text-pink-100 text-xs px-3 py-1 rounded-full">API</span>
+                            <span
+                                class="bg-pink-100 dark:bg-pink-800 text-pink-800 dark:text-pink-100 text-xs px-3 py-1 rounded-full">CSS3</span>
+                        </div>
+                        <div class="flex space-x-3">
+                            <a href="#" class="text-pink-500 hover:text-pink-700 dark:hover:text-pink-300">
+                                <i class="fas fa-external-link-alt"></i> Live Demo
+                            </a>
+                            <a href="#"
+                                class="text-gray-500 hover:text-gray-700 dark:text-gray-300 dark:hover:text-white">
+                                <i class="fab fa-github"></i> Code
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-12 animate-fadeIn delay-500">
+                <a href="#"
+                    class="inline-block border-2 border-pink-500 text-pink-500 hover:bg-pink-500 hover:text-white dark:text-pink-300 dark:border-pink-300 dark:hover:bg-pink-300 dark:hover:text-gray-900 px-6 py-3 rounded-lg transition">
+                    View All Projects
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-20 bg-white text-gray-800 dark:bg-gray-900 dark:text-white ">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-4 animate-fadeIn">My <span
+                    class="text-pink-500">Skills</span></h2>
+            <p class="text-center text-gray-600 dark:text-white mb-16 max-w-2xl mx-auto animate-fadeIn delay-100">
+                I've worked with a variety of technologies in the web development world. Here are my core competencies.
+            </p>
+
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+                <!-- Frontend Skills -->
+                <div class="animate-fadeIn delay-200">
+                    <h3 class="text-xl font-semibold mb-6 flex items-center">
+                        <i class="fas fa-laptop-code text-pink-500 mr-3"></i> Frontend
+                    </h3>
+                    <div class="space-y-4">
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span>HTML/CSS</span>
+                                <span>95%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                <div class="bg-pink-500 h-2 rounded-full" style="width: 95%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span>JavaScript</span>
+                                <span>90%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                <div class="bg-pink-500 h-2 rounded-full" style="width: 90%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span>React</span>
+                                <span>85%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                <div class="bg-pink-500 h-2 rounded-full" style="width: 85%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span>Tailwind CSS</span>
+                                <span>80%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                <div class="bg-pink-500 h-2 rounded-full" style="width: 80%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Backend Skills -->
+                <div class="animate-fadeIn delay-300">
+                    <h3 class="text-xl font-semibold mb-6 flex items-center">
+                        <i class="fas fa-server text-pink-500 mr-3"></i> Backend
+                    </h3>
+                    <div class="space-y-4">
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span>Node.js</span>
+                                <span>88%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                <div class="bg-pink-500 h-2 rounded-full" style="width: 88%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span>Express</span>
+                                <span>85%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                <div class="bg-pink-500 h-2 rounded-full" style="width: 85%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span>Python</span>
+                                <span>75%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                <div class="bg-pink-500 h-2 rounded-full" style="width: 75%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span>PHP</span>
+                                <span>70%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                <div class="bg-pink-500 h-2 rounded-full" style="width: 70%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Database Skills -->
+                <div class="animate-fadeIn delay-400">
+                    <h3 class="text-xl font-semibold mb-6 flex items-center">
+                        <i class="fas fa-database text-pink-500 mr-3"></i> Database
+                    </h3>
+                    <div class="space-y-4">
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span>MongoDB</span>
+                                <span>85%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                <div class="bg-pink-500 h-2 rounded-full" style="width: 85%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span>MySQL</span>
+                                <span>80%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                <div class="bg-pink-500 h-2 rounded-full" style="width: 80%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span>PostgreSQL</span>
+                                <span>75%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                <div class="bg-pink-500 h-2 rounded-full" style="width: 75%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span>Firebase</span>
+                                <span>70%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                <div class="bg-pink-500 h-2 rounded-full" style="width: 70%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Other Skills -->
+                <div class="animate-fadeIn delay-500">
+                    <h3 class="text-xl font-semibold mb-6 flex items-center">
+                        <i class="fas fa-tools text-pink-500 mr-3"></i> Tools
+                    </h3>
+                    <div class="space-y-4">
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span>Git</span>
+                                <span>90%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                <div class="bg-pink-500 h-2 rounded-full" style="width: 90%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span>Docker</span>
+                                <span>75%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                <div class="bg-pink-500 h-2 rounded-full" style="width: 75%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span>AWS</span>
+                                <span>70%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                <div class="bg-pink-500 h-2 rounded-full" style="width: 70%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span>Figma</span>
+                                <span>80%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                <div class="bg-pink-500 h-2 rounded-full" style="width: 80%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience & Education Section -->
+    <section id="experience" class="py-20  bg-pink-50 text-gray-800 dark:bg-gray-900 dark:text-white">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-4 animate-fadeIn">My <span
+                    class="text-pink-500">Journey</span></h2>
+            <p class="text-center text-gray-600 dark:text-gray-300 mb-16 max-w-2xl mx-auto animate-fadeIn delay-100">
+                My professional path and educational background that shaped my expertise.
+            </p>
+            <div class="flex flex-col md:flex-row gap-12">
+
+                <!-- Experience Column -->
+                <div class="md:w-1/2">
+                    <h3 class="text-2xl font-semibold text-pink-500 mb-8 flex items-center">
+                        <i class="fas fa-briefcase text-pink-500 mr-4 text-3xl"></i>Hackathons & Competitions
+                    </h3>
+                    <div class="relative border-l-2 border-pink-500 pl-8 space-y-10">
+
+                        <!-- Timeline Dot & Item -->
+                        <div class="relative">
+                            <span
+                                class="absolute -left-10 top-1.5 w-4 h-4 bg-pink-500 rounded-full border-4 border-white z-10"></span>
+                            <h4 class="text-xl font-semibold ">Full Stack Developer</h4>
+                            <span class="text-sm text-gray-600  dark:text-gray-300">Smart India Hackathon (SIH) Finalist
+                                | 2023</span>
+                            <p class="mt-2 text-gray-700  dark:text-gray-300">National-level hackathon organized by the
+                                Government of India. Selected among top teams to develop an innovative solution to a
+                                real-world problem. Built a tech prototype within 36 hours using React and Node.js.</p>
+                        </div>
+
+                        <div class="relative">
+                            <span
+                                class="absolute -left-10 top-1.5 w-4 h-4 bg-pink-500 rounded-full border-4 border-white z-10"></span>
+                            <h4 class="text-xl font-semibold">ATF (AlgoUniversity Tech Fest) Semi-Finalist</h4>
+                            <span class="text-sm text-gray-600  dark:text-gray-300">Coding | 2024</span>
+                            <p class="mt-2 text-gray-700  dark:text-gray-300">National-level competition organized by
+                                AlgoUniversity</p>
+                        </div>
+
+                        <div class="relative">
+                            <span
+                                class="absolute -left-10 top-1.5 w-4 h-4 bg-pink-500 rounded-full border-4 border-white z-10"></span>
+                            <h4 class="text-xl font-semibold">Smart India Hackathon Finalist</h4>
+                            <span class="text-sm text-gray-600  dark:text-gray-300">SIH 2024</span>
+                            <p class="mt-2 text-gray-700  dark:text-gray-300">Developed a student dropout prediction
+                                system using ML.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Education Column -->
+                <div class="md:w-1/2">
+                    <h3 class="text-2xl font-semibold mb-8 text-pink-500 flex items-center">
+                        <i class="fas fa-graduation-cap text-pink-500 mr-4 text-3xl"></i> Education
+                    </h3>
+                    <div class="relative border-l-2 border-pink-500 pl-8 space-y-10">
+
+                        <div class="relative">
+                            <span
+                                class="absolute -left-10 top-1.5 w-4 h-4 bg-pink-500 rounded-full border-4 border-white z-10"></span>
+                            <h4 class="text-xl font-semibold">B.Tech in ECE</h4>
+                            <span class="text-sm text-gray-600  dark:text-gray-300">Indian Institute of Information
+                                Technology,Bhopal | 2023 - Present</span>
+                            <p class="mt-2 text-gray-700  dark:text-gray-300">Specializing in Software Engineering and
+                                Artificial Intelligence. Finalist in Smart India Hackathon (SIH) and Semi-Finalist in
+                                AlgoUniversity's ATF Hackathon.</p>
+                        </div>
+
+                        <div class="relative">
+                            <span
+                                class="absolute -left-10 top-1.5 w-4 h-4 bg-pink-500 rounded-full border-4 border-white z-10"></span>
+                            <h4 class="text-xl font-semibold">Higher Secondary Education (Class 12)</h4>
+                            <span class="text-sm text-gray-600  dark:text-gray-300">Santosh Mittal School, Pachore |
+                                2021 - 2022</span>
+                            <p class="mt-2 text-gray-700  dark:text-gray-300">Studied Physics, Chemistry, and
+                                Mathematics under CBSE curriculum.</p>
+                        </div>
+
+                        <div class="relative">
+                            <span
+                                class="absolute -left-10 top-1.5 w-4 h-4 bg-pink-500 rounded-full border-4 border-white z-10"></span>
+                            <h4 class="text-xl font-semibold">Secondary Education (Class 10)</h4>
+                            <span class="text-sm text-gray-600  dark:text-gray-300">Providence Convent School, Pachore |
+                                2019 - 2020</span>
+                            <p class="mt-2 text-gray-700  dark:text-gray-300">
+                                </p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="py-20 bg-white text-gray-800 dark:bg-gray-900 dark:text-white">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+                <!-- Testimonial 1 -->
+                <div class="bg-white dark:bg-gray-800 p-8 rounded-lg shadow-sm animate-fadeIn delay-200">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-full overflow-hidden mr-4">
+                            <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=688&q=80"
+                                alt="Sarah Johnson" class="w-full h-full object-cover">
+                        </div>
+                        <div>
+                            <h4 class="font-bold">— Henry Ford</h4>
+                            <p class="text-pink-500 text-sm">Motivational Lines</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 dark:text-gray-300 italic">
+                        "Whether you think you can or think you can’t — you’re right."
+                    </p>
+                    <div class="mt-4 text-pink-400">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                </div>
+
+                <!-- Testimonial 2 -->
+                <div class="bg-white dark:bg-gray-800 p-8 rounded-lg shadow-sm animate-fadeIn delay-300">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-full overflow-hidden mr-4">
+                            <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80"
+                                alt="Michael Chen" class="w-full h-full object-cover">
+                        </div>
+                        <div>
+                            <h4 class="font-bold">— Sam Levenson</h4>
+                            <p class="text-pink-500 text-sm">Motivational Line</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 dark:text-gray-300 italic">
+                        "Don’t watch the clock; do what it does. Keep going."
+                    </p>
+                    <div class="mt-4 text-pink-400">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                    </div>
+                </div>
+
+                <!-- Testimonial 3 -->
+                <div class="bg-white dark:bg-gray-800 p-8 rounded-lg shadow-sm animate-fadeIn delay-400">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-full overflow-hidden mr-4">
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSxvho1aSdSmmbpM_iAXjuuV_1MurvPlMHKdg&s"
+                                alt="Emily Rodriguez" class="w-full h-full object-cover">
+                        </div>
+                        <div>
+                            <h4 class="font-bold">— Winston Churchill</h4>
+                            <p class="text-pink-500 text-sm">Motivational Line</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 dark:text-gray-300 italic">
+                        "Success is not final, failure is not fatal: It is the courage to continue that counts."
+                    </p>
+                    <div class="mt-4 text-pink-400">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-pink-50 dark:bg-gray-900 transition-colors duration-300">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-4 text-gray-900 dark:text-white animate-fadeIn">
+                Get In <span class="text-pink-500">Touch</span>
+            </h2>
+            <p class="text-center text-gray-600 dark:text-gray-300 mb-16 max-w-2xl mx-auto animate-fadeIn delay-100">
+                Have a project in mind or want to discuss potential opportunities? Feel free to reach out!
+            </p>
+
+            <div class="flex flex-col md:flex-row">
+                <!-- Left: Info -->
+                <div class="md:w-1/2 mb-12 md:mb-0 md:pr-8 animate-fadeIn delay-200">
+                    <div class="bg-white dark:bg-gray-800 p-8 rounded-lg shadow-md">
+                        <h3 class="text-2xl font-semibold mb-6 text-gray-800 dark:text-white">Contact Information</h3>
+                        <div class="space-y-6">
+                            <div class="flex items-start">
+                                <div class="bg-pink-100 dark:bg-pink-600 p-3 rounded-full mr-4">
+                                    <i class="fas fa-envelope text-pink-500 dark:text-white"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold dark:text-white">Email</h4>
+                                    <p class="text-gray-600 dark:text-gray-300">tishasaxena0@gmail.com</p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start">
+                                <div class="bg-pink-100 dark:bg-pink-600 p-3 rounded-full mr-4">
+                                    <i class="fas fa-phone-alt text-pink-500 dark:text-white"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold dark:text-white">Phone</h4>
+                                    <p class="text-gray-600 dark:text-gray-300">7477257552</p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start">
+                                <div class="bg-pink-100 dark:bg-pink-600 p-3 rounded-full mr-4">
+                                    <i class="fas fa-map-marker-alt text-pink-500 dark:text-white"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold dark:text-white">Location</h4>
+                                    <p class="text-gray-600 dark:text-gray-300">Bhopal, India</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mt-8">
+                            <h4 class="font-semibold mb-4 dark:text-white">Follow Me</h4>
+                            <div class="flex space-x-4">
+                                <a href="#"
+                                    class="bg-pink-500 hover:bg-pink-600 text-white w-10 h-10 rounded-full flex items-center justify-center transition">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                                <a href="#"
+                                    class="bg-pink-500 hover:bg-pink-600 text-white w-10 h-10 rounded-full flex items-center justify-center transition">
+                                    <i class="fab fa-linkedin-in"></i>
+                                </a>
+                                <a href="#"
+                                    class="bg-pink-500 hover:bg-pink-600 text-white w-10 h-10 rounded-full flex items-center justify-center transition">
+                                    <i class="fab fa-twitter"></i>
+                                </a>
+                                <a href="#"
+                                    class="bg-pink-500 hover:bg-pink-600 text-white w-10 h-10 rounded-full flex items-center justify-center transition">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right: Form -->
+                <div class="md:w-1/2 md:pl-8 animate-fadeIn delay-300">
+                    <div class="bg-white dark:bg-gray-800 p-8 rounded-lg shadow-md">
+                        <h3 class="text-2xl font-semibold mb-6 text-gray-800 dark:text-white">Send Me a Message</h3>
+                        <form id="contactForm">
+                            <div class="mb-6">
+                                <label for="name" class="block text-gray-700 dark:text-gray-300 mb-2">Name</label>
+                                <input type="text" id="name"
+                                    class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-transparent"
+                                    required>
+                            </div>
+                            <div class="mb-6">
+                                <label for="email" class="block text-gray-700 dark:text-gray-300 mb-2">Email</label>
+                                <input type="email" id="email"
+                                    class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-transparent"
+                                    required>
+                            </div>
+                            <div class="mb-6">
+                                <label for="subject" class="block text-gray-700 dark:text-gray-300 mb-2">Subject</label>
+                                <input type="text" id="subject"
+                                    class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-transparent"
+                                    required>
+                            </div>
+                            <div class="mb-6">
+                                <label for="message" class="block text-gray-700 dark:text-gray-300 mb-2">Message</label>
+                                <textarea id="message" rows="5"
+                                    class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-transparent"
+                                    required></textarea>
+                            </div>
+                            <button type="submit"
+                                class="bg-pink-500 hover:bg-pink-600 text-white px-6 py-3 rounded-lg transition w-full">
+                                Send Message
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer
+        class="border-t-2 bg-pink-100 dark:bg-gray-900 text-pink-900 dark:text-gray-100 py-12 px-20 transition-colors duration-300">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between">
+                <div class="mb-8 md:mb-0">
+                    <h3 class="text-2xl font-bold mb-4 text-pink-700 dark:text-pink-400">Tisha Saxena</h3>
+                    <p class="max-w-xs text-pink-400">
+                        Full Stack Developer creating digital experiences that make an impact.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-8">
+                    <div>
+                        <h4 class="text-lg font-semibold mb-4 text-pink-700 dark:text-pink-400">Quick Links</h4>
+                        <ul class="space-y-2">
+                            <li><a href="#home"
+                                    class="text-pink-500 hover:text-pink-700 dark:hover:text-pink-300 transition">Home</a>
+                            </li>
+                            <li><a href="#about"
+                                    class="text-pink-500 hover:text-pink-700 dark:hover:text-pink-300 transition">About</a>
+                            </li>
+                            <li><a href="#projects"
+                                    class="text-pink-500 hover:text-pink-700 dark:hover:text-pink-300 transition">Projects</a>
+                            </li>
+                            <li><a href="#contact"
+                                    class="text-pink-500 hover:text-pink-700 dark:hover:text-pink-300 transition">Contact</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <h4 class="text-lg font-semibold mb-4 text-pink-700 dark:text-pink-400">Services</h4>
+                        <ul class="space-y-2">
+                            <li><a href="#"
+                                    class="text-pink-500 hover:text-pink-700 dark:hover:text-pink-300 transition">Web
+                                    Development</a></li>
+                            <li><a href="#"
+                                    class="text-pink-500 hover:text-pink-700 dark:hover:text-pink-300 transition">App
+                                    Development</a></li>
+                            <li><a href="#"
+                                    class="text-pink-500 hover:text-pink-700 dark:hover:text-pink-300 transition">UI/UX
+                                    Design</a></li>
+                            <li><a href="#"
+                                    class="text-pink-500 hover:text-pink-700 dark:hover:text-pink-300 transition">Problem
+                                    Solving</a></li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <h4 class="text-lg font-semibold mb-4 text-pink-700 dark:text-pink-400">Connect</h4>
+                        <div class="flex space-x-4 mb-4">
+                            <a href="#" class="text-pink-500 hover:text-pink-700 dark:hover:text-pink-300 transition">
+                                <i class="fab fa-github text-xl"></i>
+                            </a>
+                            <a href="#" class="text-pink-500 hover:text-pink-700 dark:hover:text-pink-300 transition">
+                                <i class="fab fa-linkedin-in text-xl"></i>
+                            </a>
+                            <a href="#" class="text-pink-500 hover:text-pink-700 dark:hover:text-pink-300 transition">
+                                <i class="fab fa-twitter text-xl"></i>
+                            </a>
+                            <a href="#" class="text-pink-500 hover:text-pink-700 dark:hover:text-pink-300 transition">
+                                <i class="fab fa-instagram text-xl"></i>
+                            </a>
+                        </div>
+                        <p class="text-pink-500">tishasaxena0@gmail.com</p>
+                    </div>
+                </div>
+            </div>
+
+            <div
+                class="border-t-2 border-pink-300 dark:border-gray-600 mt-12 pt-8 text-center text-pink-500 dark:text-gray-400">
+                <p class="text-pink-500">&copy; 2023 Tisha Saxena. All rights reserved.</p>
+            </div>
+
+            <button onclick="window.scrollTo({ top: 0, behavior: 'smooth' });"
+                class="fixed bottom-5 left-5 bg-pink-600 text-white h-10 w-10 rounded-full shadow-lg hover:bg-pink-800 transition z-50">
+                <i class="fas fa-arrow-up"></i>
+            </button>
+
+        </div>
+    </footer>
+
+    <!-- Chatbot Container -->
+    <div id="chatbot-container"
+        class="fixed bottom-24 right-5 w-80 h-[65vh] bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded-xl shadow-lg z-50 flex flex-col overflow-hidden hidden group">
+
+        <!-- Chat Messages Area -->
+        <div id="chatbox"
+            class="flex-1 px-2 py-3 my-3 space-y-2 overflow-y-auto text-sm text-gray-800 dark:text-gray-100">
+            <!-- Messages will go here -->
+        </div>
+
+        <!-- Input Field -->
+        <div class="border-t border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 p-3">
+            <input id="chat-input" type="text" placeholder="Ask me something..."
+                class="w-full px-3 py-2 rounded-md bg-white dark:bg-gray-800 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none" />
+        </div>
+    </div>
+
+    <!-- Chat Toggle Button -->
+    <button id="chatbotBtn" onclick="toggleChat()"
+        class="fixed bottom-6 right-6 w-14 h-14 rounded-full bg-pink-600 text-white shadow-xl flex items-center justify-center hover:bg-pink-700 transition-transform transform hover:scale-110 z-50">
+        <i class="fas fa-robot text-2xl"></i>
+    </button>
+
+    <script src="script.js"></script>
+
 </body>
+
 </html>
